@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport Meta Tag Penting untuk HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jadwal Perkuliahan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at top right, #2d124d 0%, #0b0f19 70%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-reset {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            touch-action: manipulation;
+        }
+
+        .btn-reset:active {
+            transform: scale(0.95);
+        }
+
+        /* Pembungkus Tabel untuk Scroll Smooth di HP */
+        .jadwal-container {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Scroll lancar di iOS */
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            background-image: linear-gradient(rgba(15, 15, 25, 0.75), rgba(15, 15, 25, 0.75)), url('Tendou Kei (1).jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: none;
+        }
+
+        th, td {
+            padding: 12px 8px;
+            text-align: center;
+            border: none;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        thead th {
+            background: rgba(10, 10, 20, 0.85);
+            font-weight: 600;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* STICKY COLUMNS: Agar Hari & Matkul Menempel saat Scroll di HP */
+        .sticky-col-1 {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            background: #231238 !important;
+            font-weight: bold;
+            min-width: 75px;
+        }
+
+        .sticky-col-2 {
+            position: sticky;
+            left: 75px; /* Offset dari kolom pertama */
+            z-index: 5;
+            background: #181928 !important;
+            text-align: left;
+            padding-left: 10px;
+            font-weight: 600;
+            min-width: 180px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 4px 0 8px rgba(0,0,0,0.3); /* Bayangan pemisah */
+        }
+
+        /* Khusus Header Sticky */
+        thead .sticky-col-1, 
+        thead .sticky-col-2 {
+            z-index: 15;
+            background: #0d0e17 !important;
+        }
+
+        /* Checkbox Diperbesar untuk Layar Sentuh HP */
+        .checkbox-cell {
+            min-width: 44px; /* Area sentuh ideal */
+            height: 44px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #8b5cf6;
+            vertical-align: middle;
+        }
+
+        tbody tr:hover td, 
+        tbody tr:hover th.sticky-col-2 {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-container">
+        <h1>Jadwal Perkuliahan</h1>
+        <button class="btn-reset" onclick="resetSemuaCheckbox()">Reset Semua Centang</button>
+    </header>
+
+    <main>
+        <div class="jadwal-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sticky-col-1">Hari</th>
+                        <th class="sticky-col-2">Mata Kuliah</th>
+                        <th>P1</th><th>P2</th><th>P3</th><th>P4</th>
+                        <th>P5</th><th>P6</th><th>P7</th><th>P8</th>
+                        <th>P9</th><th>P10</th><th>P11</th><th>P12</th>
+                        <th>P13</th><th>P14</th><th>P15</th><th>P16</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- SELASA -->
+                    <tr>
+                        <th class="sticky-col-1" rowspan="2">SELASA</th>
+                        <th class="sticky-col-2">ILMU SOSIAL & BUDAYA DASAR</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <th class="sticky-col-2">PEMROGRAMAN BERORIENTASI OBJEK#</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+
+                    <!-- RABU -->
+                    <tr>
+                        <th class="sticky-col-1" rowspan="2">RABU</th>
+                        <th class="sticky-col-2">KECAKAPAN ANTAR PERSONAL</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <th class="sticky-col-2">STATISTIKA LANJUT</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+
+                    <!-- KAMIS -->
+                    <tr>
+                        <th class="sticky-col-1" rowspan="2">KAMIS</th>
+                        <th class="sticky-col-2">PEMROGRAMAN WEB#</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <th class="sticky-col-2">KEWIRAUSAHAAN</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+
+                    <!-- JUM'AT -->
+                    <tr>
+                        <th class="sticky-col-1" rowspan="2">JUM'AT</th>
+                        <th class="sticky-col-2">SISTEM OPERASI*</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <th class="sticky-col-2">TEORI BAHASA AUTOMATA*</th>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                        <td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td><td class="checkbox-cell"><input type="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const STORAGE_KEY = 'jadwal_perkuliahan_progress';
+
+            function loadSavedState() {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                if (savedData) {
+                    const checkedIndexes = JSON.parse(savedData);
+                    checkboxes.forEach((checkbox, index) => {
+                        checkbox.checked = checkedIndexes.includes(index);
+                    });
+                }
+            }
+
+            function saveState() {
+                const checkedIndexes = [];
+                checkboxes.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                        checkedIndexes.push(index);
+                    }
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedIndexes));
+            }
+
+            checkboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', saveState);
+            });
+
+            loadSavedState();
+        });
+
+        function resetSemuaCheckbox() {
+            if (confirm('Hapus semua centang?')) {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+                localStorage.removeItem('jadwal_perkuliahan_progress');
+            }
+        }
+    </script>
+</body>
+</html>
